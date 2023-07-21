@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 export default function App() {
+  event.preventDefault();
+  const [holiday, setholiday] = useState("");
+  const [date, setdate] = useState("");
   function handleSubmit(event) {
-    event.preventDefault();
+    const holidayInput = event.target.holiday.value;
+    setholiday(holidayInput);
+    const dateInput = event.target.date.value;
+    setdate(dateInput);
+    event.target.reset();
   }
 
   return (
@@ -30,10 +37,10 @@ export default function App() {
       </form>
       <h2>Output of Submitted Data</h2>
       <p>
-        Favourite Holiday: <span className="output">New Year</span>
+        Favourite Holiday: <span className="output">{holiday}</span>
       </p>
       <p>
-        Date: <span className="output">Well...</span>
+        Date: <span className="output">{date}</span>
       </p>
     </div>
   );
